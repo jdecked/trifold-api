@@ -16,11 +16,10 @@ RUN apk update && \
   rm -rf /var/cache/apk/*
 ADD ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r ./requirements.txt
-RUN ls -a
-RUN python ./manage.py migrate
 
 # add app
 COPY . /usr/src/app
+RUN python ./manage.py migrate
 
 # run server
 CMD ["gunicorn", "--certfile", "config/ssl/development/localhost-cert.pem", "--keyfile", "config/ssl/development/localhost-key.pem", "--ca-cert", "config/ssl/development/ca-cert.pem", "wsgi", "--log-file", "-"]

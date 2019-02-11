@@ -16,9 +16,9 @@ RUN apk update && \
 	rm -rf /var/cache/apk/*
 ADD ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r ./requirements.txt
-RUN python ./manage.py migrate
 
 COPY . /usr/src/app
+RUN python ./manage.py migrate
 
 EXPOSE 8000
 
