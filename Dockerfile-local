@@ -11,7 +11,7 @@ ENV DJANGO_SECRET_KEY ${DJANGO_SECRET_KEY}
 
 # add and install requirements
 RUN apt-get update
-RUN apt-get install mysql-server libmysqlclient-dev
+RUN apt-get install mysql-server libmysqlclient-dev | Y
 ADD ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r ./requirements.txt
 RUN python manage.py migrate
