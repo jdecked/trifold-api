@@ -11,10 +11,9 @@ ENV DJANGO_SECRET_KEY ${DJANGO_SECRET_KEY}
 
 # add and install requirements
 RUN apk update && \
-	apk add mysql mysql-client mariadb-dev && \
+	apk add mysql mysql-client mariadb-dev gcc musl-dev netcat && \
 	addgroup mysql mysql && \
-	rm -rf /var/cache/apk/* \
-  netcat
+	rm -rf /var/cache/apk/*
 ADD ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r ./requirements.txt
 RUN python manage.py migrate
