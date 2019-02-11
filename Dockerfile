@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 # and now all these env variables
 ENV DATABASE_URL mysql://root@localhost/trifold_test
 ENV DJANGO_ENVIRONMENT production
-ENV DJANGO_SECRET_KEY ${DJANGO_SECRET_KEY}
+ENV DJANGO_SECRET_KEY $DJANGO_SECRET_KEY
 
 # add and install requirements
 RUN apk update && \
