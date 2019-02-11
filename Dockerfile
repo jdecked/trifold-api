@@ -11,7 +11,7 @@ ENV DJANGO_SECRET_KEY ${DJANGO_SECRET_KEY}
 
 # add and install requirements
 RUN apk update && \
-  apk add mysql mysql-client libmysqlclient-dev && \
+  apk add mysql mysql-client mariadb-dev && \
   addgroup mysql mysql && \
   rm -rf /var/cache/apk/*
 ADD ./requirements.txt /usr/src/app/requirements.txt
