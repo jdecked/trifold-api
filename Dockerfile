@@ -16,6 +16,7 @@ RUN apk update && \
   rm -rf /var/cache/apk/*
 ADD ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r ./requirements.txt
+RUN ls -a
 RUN python ./manage.py migrate
 
 # add app
