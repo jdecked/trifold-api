@@ -1,4 +1,4 @@
-FROM python:3.6-alpine
+FROM python:3.6
 
 # set working directory
 RUN mkdir -p /usr/src/app
@@ -10,8 +10,8 @@ ENV DJANGO_ENVIRONMENT production
 ENV DJANGO_SECRET_KEY ${DJANGO_SECRET_KEY}
 
 # add and install requirements
-RUN apk update
-RUN apk add mysql-server libmysqlclient-dev netcat
+RUN apt-get update
+RUN apt-get install mysql-server libmysqlclient-dev netcat
 ADD ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r ./requirements.txt
 RUN python manage.py migrate
