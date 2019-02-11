@@ -11,7 +11,7 @@ ENV DJANGO_SECRET_KEY ${DJANGO_SECRET_KEY}
 
 # add and install requirements
 RUN apk update
-RUN apk install mysql-server libmysqlclient-dev netcat
+RUN apk add mysql-server libmysqlclient-dev netcat
 ADD ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r ./requirements.txt
 RUN python manage.py migrate
