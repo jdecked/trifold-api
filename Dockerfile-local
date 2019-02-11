@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.6-alpine
 
 # set working directory
 RUN mkdir -p /usr/src/app
@@ -10,10 +10,14 @@ ENV DJANGO_ENVIRONMENT development
 ENV DJANGO_SECRET_KEY ${DJANGO_SECRET_KEY}
 
 # add and install requirements
-RUN apt-get update
-RUN apt-get install -qq mysql-server libmysqlclient-dev
+RUN apk add --update --no-cache mariadb-client-libs \
+  && apk add --no-cache --virtual .build-deps \
+  mariadb-dev \
+  gcc \
+  musl-dev
 ADD ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r ./requirements.txt
+RUN apk del .build-deps
 RUN python manage.py migrate
 
 COPY . /usr/src/app
