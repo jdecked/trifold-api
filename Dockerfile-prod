@@ -10,15 +10,13 @@ ENV DJANGO_ENVIRONMENT production
 ENV DJANGO_SECRET_KEY ${DJANGO_SECRET_KEY}
 
 # add and install requirements
-RUN apk add --update --no-cache mariadb-client-libs \
-  && apk add --no-cache --virtual .build-deps \
-  mariadb-dev \
-  gcc \
-  musl-dev \
+RUN apk update && \
+	apk add mysql mysql-client libmysqlclient-dev && \
+	addgroup mysql mysql && \
+	rm -rf /var/cache/apk/* \
   netcat
 ADD ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r ./requirements.txt
-RUN apk del .build-deps
 RUN python manage.py migrate
 
 # add app
