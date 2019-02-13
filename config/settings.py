@@ -95,9 +95,11 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'trifold',
+        # TODO (jdc): ...fix
+        'NAME': 'mysql',
         'USER': 'root',
         'PASSWORD': '',
+        'HOST': os.environ.get('DB_HOST', 'mysql').lower()
     }
 }
 
