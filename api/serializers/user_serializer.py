@@ -12,9 +12,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'url',
             'email',
-            'first_name',
-            'last_name',
-            'picture',
             'token'
         )
 

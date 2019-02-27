@@ -36,10 +36,11 @@ ALLOWED_HOSTS = []
 if ENVIRONMENT == 'production':
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
-    SECURE_SSL_REDIRECT = False
-    SECURE_HSTS_SECONDS = 604800
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+    # TODO (jdc): Enable these with SSL
+    # SECURE_SSL_REDIRECT = False
+    # SECURE_HSTS_SECONDS = 604800
+    # SESSION_COOKIE_SECURE = True
+    # CSRF_COOKIE_SECURE = True
     X_FRAME_OPTIONS = 'DENY'
 
 
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'rest_framework',
     'rest_framework.authtoken',
     'api'
@@ -94,12 +96,11 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        # TODO (jdc): ...fix
-        'NAME': 'mysql',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': os.environ.get('DB_HOST', 'mysql').lower()
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
@@ -120,7 +121,7 @@ REST_FRAMEWORK = {
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
-# AUTH_USER_MODEL = 'api.User'
+AUTH_USER_MODEL = 'api.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -156,6 +157,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '{}/static/'.format(BASE_DIR)
 
 # List of finder classes that know how to find static files in
 # various locations.
