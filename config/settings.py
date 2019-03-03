@@ -102,7 +102,6 @@ if os.environ.get('DATABASE_URL'):
     DATABASES['default'] = dj_database_url.parse(
         os.environ.get('DATABASE_URL')
     )
-    print(DATABASES)
 else:
     # Local development
     DATABASES = {
