@@ -97,10 +97,10 @@ WSGI_APPLICATION = 'wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {}
 
-if os.environ.get('HEROKU_POSTGRESQL_GREEN_URL'):
+if os.environ.get('DATABASE_URL'):
     # Production database
     DATABASES['default'] = dj_database_url.parse(
-        os.environ.get('HEROKU_POSTGRESQL_GREEN_URL')
+        os.environ.get('DATABASE_URL')
     )
     print(DATABASES)
 else:
