@@ -102,7 +102,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': os.environ.get('HEROKU_POSTGRESQL_GREEN_URL', 'db'),
+        'HOST': os.environ.get('HEROKU_POSTGRESQL_GREEN_URL') or 'db',
         'PORT': 5432,
     }
 }
