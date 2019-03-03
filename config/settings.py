@@ -99,9 +99,10 @@ DATABASES = {}
 
 if os.environ.get('HEROKU_POSTGRESQL_GREEN_URL'):
     # Production database
-    DATABASES['default'] = dj_database_url.config(
+    DATABASES['default'] = dj_database_url.parse(
         os.environ.get('HEROKU_POSTGRESQL_GREEN_URL')
     )
+    print(DATABASES)
 else:
     # Local development
     DATABASES = {
