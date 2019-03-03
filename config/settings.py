@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -94,18 +95,24 @@ WSGI_APPLICATION = 'wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-print('env variables')
-print(os.environ.get('HEROKU_POSTGRESQL_GREEN_URL'))
+DATABASES = {}
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': os.environ.get('HEROKU_POSTGRESQL_GREEN_URL') or 'db',
-        'PORT': 5432,
+if os.environ.get('HEROKU_POSTGRESQL_GREEN_URL'):
+    # Production database
+    DATABASES['default'] = dj_database_url.config(
+        os.environ.get('HEROKU_POSTGRESQL_GREEN_URL')
+    )
+else:
+    # Local development
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'HOST': 'db'
+            'PORT': 5432,
+        }
     }
-}
 
 
 # REST framework settings

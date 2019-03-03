@@ -14,8 +14,6 @@ ENV CLIENT_ID=${CLIENT_ID}
 ARG HEROKU_POSTGRESQL_GREEN_URL
 ENV HEROKU_POSTGRESQL_GREEN_URL=${HEROKU_POSTGRESQL_GREEN_URL}
 
-RUN echo $HEROKU_POSTGRESQL_GREEN_URL
-
 # add and install requirements
 RUN apk update && \
   apk add python3-dev postgresql-dev gcc musl-dev && \
