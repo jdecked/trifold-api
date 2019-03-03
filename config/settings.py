@@ -94,6 +94,8 @@ WSGI_APPLICATION = 'wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+print('env variables')
+print(os.environ.get('HEROKU_POSTGRESQL_GREEN_URL'))
 
 DATABASES = {
     'default': {
