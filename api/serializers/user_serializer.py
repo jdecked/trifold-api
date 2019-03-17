@@ -5,14 +5,10 @@ from .token_serializer import TokenSerializer
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    token = serializers.SerializerMethodField()
-
     class Meta:
         model = User
         fields = (
-            'url',
             'email',
-            'token'
         )
 
     def get_token(self, user):
