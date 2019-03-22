@@ -1,11 +1,7 @@
 from rest_framework.test import APITestCase
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
-
 from api.models import User
-# from oauth2_provider.settings import oauth2_settings
-# from oauthlib.common import generate_token
-# from oauth2_provider.models import AccessToken, Application
 
 
 class BaseTestMixin(object):
