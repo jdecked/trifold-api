@@ -1,5 +1,5 @@
 # trifold-api
-This is the API code for the [Trifold project](https://github.com/jdecked/trifold). Check out the [trifold README](https://github.com/jdecked/trifold/blob/master/README.md) for a full explanation of Trifold.
+This is the API code for the [Trifold project](https://github.com/jdecked/trifold). Check out the [Trifold README](https://github.com/jdecked/trifold/blob/master/README.md) for a full explanation of Trifold.
 
 ## Running Instructions
 Note that this repository is one of three repositories for the microservices involved in Trifold; the other two repositories host the [frontend code](https://github.com/jdecked/trifold-client) and the [reverse proxy](https://github.com/jdecked/trifold), so go there if you're looking to peruse the non-Python source code.
